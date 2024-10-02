@@ -17,4 +17,8 @@ public class WortListe {
     public Wort getWort(int index) {
         return wortListe.get(index);
     }
+
+    public int size() {
+        return wortListe.size();
+    }
 }

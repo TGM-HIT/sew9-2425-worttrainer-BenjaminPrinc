@@ -4,7 +4,10 @@ public class Wort {
     private String wort;
     private String url;
 
-    public Wort(String wort, String url) {}
+    public Wort(String wort, String url) {
+        setWort(wort);
+        setUrl(url);
+    }
 
     public void setWort(String w) {
         wort = w;

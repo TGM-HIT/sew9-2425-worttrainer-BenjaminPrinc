@@ -1,5 +1,8 @@
 package at.bprinc;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+
 public class GameController {
     public static void main(String[] args) {
         System.out.println("Hello world!");
@@ -8,10 +11,18 @@ public class GameController {
 
         WortListe wl = new WortListe(w1);
         wl.addWort(w2);
-        startGame();
+        Worttrainer wt = new Worttrainer(wl);
+        startGame(wt);
     }
 
-    private static void startGame() {
-
+    private static void startGame(Worttrainer wt) {
+        Overlay overlay = new Overlay();
+        try {
+            overlay.showNextWort(wt.nextWort());
+        }catch (MalformedURLException mue) {
+            System.err.println(mue);
+        } catch (URISyntaxException use) {
+            System.err.println(use);
+        }
     }
 }
