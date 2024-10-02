@@ -28,7 +28,10 @@ public class Overlay {
 
         // JLabel mit dem Bild hinzufügen
         JLabel imageLabel = new JLabel(new ImageIcon(resizeImage));
+        imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(imageLabel);
+
+        panel.add(Box.createRigidArea(new Dimension(0, 20)));
 
         // Leeres Textfeld für den Input hinzufügen
         JTextField textField = new JTextField(10); // 10 Spalten, kann angepasst werden
@@ -42,7 +45,18 @@ public class Overlay {
             String input = textField.getText();
             System.out.println("Eingegebener Text: " + input);
             return input;
+        } else if (option == JOptionPane.CANCEL_OPTION) {
+            //Bei Klick auf Cancel wird das Programm beendet
+            System.exit(0);
         }
         return "";
+    }
+
+    public void showSuccessMessage(int[] stats) {
+        JOptionPane.showMessageDialog(null, "Wort richtig erraten!\nInsgesamt richtig erraten: "+stats[0]+", falsch erraten: "+stats[1], "Worttrainer", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void showFailMessage(){
+        JOptionPane.showMessageDialog(null, "Leider falsch!", null, JOptionPane.ERROR_MESSAGE);
     }
 }

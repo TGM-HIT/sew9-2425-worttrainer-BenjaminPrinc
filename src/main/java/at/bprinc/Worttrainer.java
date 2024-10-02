@@ -6,8 +6,8 @@ public class Worttrainer {
     private WortListe wl;
     private int richtig = 0;
     private int falsch = 0;
-    private int insgesamt = 0;
     Random r = new Random();
+    private String currentWord;
 
     /**
      * Konstruktor um ein neues Worttrainer Spiel zu erstellen
@@ -17,7 +17,6 @@ public class Worttrainer {
         this.wl = wl;
         this.richtig = 0;
         this.falsch = 0;
-        this.insgesamt = 0;
     }
 
     /**
@@ -25,13 +24,19 @@ public class Worttrainer {
      * @param wl        Wortliste
      * @param richtig   Wieviele Fragen richtig beantwortet wurden
      * @param falsch    Wieviele Fragen falsch beantwortet wurden
-     * @param insgesamt Wieviele Fragen insgesamt beantwortet wurden
      */
-    public Worttrainer(WortListe wl, int richtig, int falsch, int insgesamt) {
+    public Worttrainer(WortListe wl, int richtig, int falsch) {
         this.wl = wl;
         this.richtig = richtig;
         this.falsch = falsch;
-        this.insgesamt = insgesamt;
+    }
+
+    public int getFalsch() {
+        return falsch;
+    }
+
+    public int getRichtig() {
+        return richtig;
     }
 
     /**
@@ -39,10 +44,20 @@ public class Worttrainer {
      * @return  Wort aus der Wortliste
      */
     public Wort nextWort() {
-        insgesamt++;
         Wort wtmp = wl.getWort(r.nextInt(wl.size()));
+        this.currentWord = wtmp.getWort();
         System.out.println(wtmp.getWort());
         return wtmp;
+    }
+
+    public boolean checkAnswer(String answer) {
+        if (answer.equalsIgnoreCase(currentWord)) {
+            this.richtig++;
+            return true;
+        } else {
+            this.falsch++;
+            return false;
+        }
     }
 
 }
