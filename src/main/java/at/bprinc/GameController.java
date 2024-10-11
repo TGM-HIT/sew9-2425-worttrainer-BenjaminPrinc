@@ -23,7 +23,7 @@ public class GameController {
                 Wort tmp = wt.nextWort();
                 do {
                     String response = overlay.showNextWort(tmp);
-                    if (response != null && !response.equals("")) {
+                    if (response != null && !response.isEmpty()) {
                         if (wt.checkAnswer(response)) {
                             rightAnswer = true;
                             overlay.showSuccessMessage(new int[]{wt.getRichtig(), wt.getFalsch()});
