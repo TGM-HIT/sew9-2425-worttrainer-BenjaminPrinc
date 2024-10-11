@@ -31,8 +31,29 @@ public class Overlay {
         imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(imageLabel);
 
-        panel.add(Box.createRigidArea(new Dimension(0, 20)));
+        panel.add(Box.createRigidArea(new Dimension(0, 15)));
 
+        JButton speicherbtn = new JButton("Speichern");
+        JButton ladenbtn = new JButton("Laden");
+        speicherbtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ladenbtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+        buttonPanel.add(speicherbtn);
+        buttonPanel.add(Box.createRigidArea(new Dimension(10, 0)));
+        buttonPanel.add(ladenbtn);
+
+        speicherbtn.addActionListener(e -> {
+            GameController.saveGame();
+        });
+
+        ladenbtn.addActionListener(e -> {
+            GameController.loadGame();
+        });
+
+        panel.add(buttonPanel);
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
         // Leeres Textfeld für den Input hinzufügen
         JTextField textField = new JTextField(10); // 10 Spalten, kann angepasst werden
         panel.add(textField);

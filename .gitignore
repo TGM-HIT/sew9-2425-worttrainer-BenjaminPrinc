@@ -40,3 +40,5 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+/UML/WorttrainerUML.png.bak
+/UML/WorttrainerReloaded.asta.lock

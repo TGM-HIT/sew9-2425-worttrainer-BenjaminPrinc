@@ -37,6 +37,10 @@ public class Worttrainer {
         return richtig;
     }
 
+    public WortListe getWl() {
+        return wl;
+    }
+
     /**
      * Wählt zufällig das nächste Wort aus der Wortliste
      * @return  Wort aus der Wortliste

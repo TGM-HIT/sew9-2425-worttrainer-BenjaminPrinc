@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 
 public class GameController {
+    static Worttrainer wt;
     public static void main(String[] args) {
         System.out.println("Worttrainer gestartet");
         Wort w1 = new Wort("Hund", "https://cdn.pixabay.com/photo/2018/09/21/23/28/dog-3694266_640.jpg");
@@ -11,7 +12,7 @@ public class GameController {
 
         WortListe wl = new WortListe(w1);
         wl.addWort(w2);
-        Worttrainer wt = new Worttrainer(wl);
+        wt = new Worttrainer(wl);
         startGame(wt);
     }
 
@@ -38,5 +39,15 @@ public class GameController {
         } catch (URISyntaxException use) {
             System.err.println(use);
         }
+    }
+
+    public static void saveGame() {
+        SaveLoad sv = new JsonImpl();
+        sv.speichern(wt);
+        System.out.println("Erfolgreich gespeichert!");
+    }
+
+    public static void loadGame() {
+
     }
 }
