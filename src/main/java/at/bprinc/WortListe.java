@@ -21,4 +21,8 @@ public class WortListe {
     public int size() {
         return wortListe.size();
     }
+
+    public List<Wort> getWortListe() {
+        return wortListe;
+    }
 }
