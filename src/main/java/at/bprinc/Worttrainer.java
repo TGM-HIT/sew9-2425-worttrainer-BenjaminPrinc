@@ -3,7 +3,7 @@ package at.bprinc;
 import java.util.Random;
 
 public class Worttrainer {
-    private final WortListe wl;
+    private WortListe wl;
     private int richtig = 0;
     private int falsch = 0;
     Random r = new Random();
@@ -39,6 +39,18 @@ public class Worttrainer {
 
     public WortListe getWl() {
         return wl;
+    }
+
+    public void setWl(WortListe wl) {
+        this.wl = wl;
+    }
+
+    public void setRichtig(int richtig) {
+        this.richtig = richtig;
+    }
+
+    public void setFalsch(int falsch) {
+        this.falsch = falsch;
     }
 
     /**

@@ -3,9 +3,7 @@ package at.bprinc;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class JsonImpl implements SaveLoad{
 
@@ -32,7 +30,32 @@ public class JsonImpl implements SaveLoad{
 
     @Override
     public Worttrainer laden() {
-        //TODO Implementation
-        return new Worttrainer(new WortListe(new Wort("WIP", "https://todo.com")));
+        Worttrainer loadedWt = null;
+        try(BufferedReader br = new BufferedReader(new FileReader("save.json"))) {
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+
+            JSONObject jsonObject = new JSONObject(sb.toString());
+            JSONArray jsonWortliste = jsonObject.getJSONArray("wortliste");
+            WortListe loadedWl = null;
+            for (int i = 0; i < jsonWortliste.length(); i++) {
+                JSONObject jsonWort = jsonWortliste.getJSONObject(i);
+                Wort wtmp = new Wort(jsonWort.getString("wort"), jsonWort.getString("url"));
+                if (loadedWl == null) {
+                    loadedWl = new WortListe(wtmp);
+                } else {
+                    loadedWl.addWort(wtmp);
+                }
+            }
+
+            loadedWt = new Worttrainer(loadedWl, jsonObject.getInt("richtig"), jsonObject.getInt("falsch"));
+        }catch (IOException ioe) {
+            System.err.println("Fehler beim laden: "+ioe.getMessage());
+        }
+
+        return loadedWt;
     }
 }

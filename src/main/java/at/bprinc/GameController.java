@@ -48,6 +48,13 @@ public class GameController {
     }
 
     public static void loadGame() {
-
+        SaveLoad sv = new JsonImpl();
+        Worttrainer wtloaded = sv.laden();
+        if (wtloaded != null) {
+            wt.setWl(wtloaded.getWl());
+            wt.setRichtig(wtloaded.getRichtig());
+            wt.setFalsch(wtloaded.getFalsch());
+            System.out.println("Erfolgreich geladen!");
+        }
     }
 }
