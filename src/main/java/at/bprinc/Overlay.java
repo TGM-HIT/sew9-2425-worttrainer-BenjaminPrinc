@@ -62,13 +62,9 @@ public class Overlay {
         buttonPanel.add(Box.createRigidArea(new Dimension(10, 0)));
         buttonPanel.add(ladenbtn);
 
-        speicherbtn.addActionListener(e -> {
-            GameController.saveGame();
-        });
+        speicherbtn.addActionListener(e -> GameController.saveGame());
 
-        ladenbtn.addActionListener(e -> {
-            GameController.loadGame();
-        });
+        ladenbtn.addActionListener(e -> GameController.loadGame());
 
         panel.add(buttonPanel);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
