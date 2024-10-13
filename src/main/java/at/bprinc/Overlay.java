@@ -12,6 +12,17 @@ import java.net.URISyntaxException;
  * @version 02-10-2024
  */
 public class Overlay {
+
+    private int versuch = 1;
+
+    public void setVersuch(int versuch) {
+        this.versuch = versuch;
+    }
+
+    public int getVersuch() {
+        return this.versuch;
+    }
+
     /**
      * Methode welche einen Worteintrag übernimmt und das Bild sowie ein Eingabefeld anzeigt
      * @param w                         Worteintrag welcher das richtige Wort sowie die URL zum Bild enthält
@@ -19,12 +30,19 @@ public class Overlay {
      * @throws URISyntaxException       Wird geworfen, wenn der String keine gültige URL enthält
      */
     public String showNextWort(Wort w) throws MalformedURLException, URISyntaxException {
+        System.out.println(this.versuch);
         URI uri = new URI(w.getUrl());
         ImageIcon icon = new ImageIcon(uri.toURL());
         Image image = icon.getImage();
         Image resizeImage = image.getScaledInstance(240, 240, Image.SCALE_SMOOTH);
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); // Vertikale Anordnung
+
+        if (versuch > 1) {
+            JLabel versuchText = new JLabel("Vorherige Antwort war falsch. Versuch: " + versuch);
+            versuchText.setAlignmentX(Component.CENTER_ALIGNMENT);
+            panel.add(versuchText);
+        }
 
         // JLabel mit dem Bild hinzufügen
         JLabel imageLabel = new JLabel(new ImageIcon(resizeImage));

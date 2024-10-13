@@ -22,6 +22,8 @@ public class GameController {
         try {
             while(true) {
                 Wort tmp = wt.nextWort();
+                overlay.setVersuch(1);
+                rightAnswer = false;
                 do {
                     String response = overlay.showNextWort(tmp);
                     if (response != null && !response.isEmpty()) {
@@ -29,6 +31,7 @@ public class GameController {
                             rightAnswer = true;
                             overlay.showSuccessMessage(new int[]{wt.getRichtig(), wt.getFalsch()});
                         } else {
+                            overlay.setVersuch(overlay.getVersuch() + 1);
                             overlay.showFailMessage();
                         }
                     }
