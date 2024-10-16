@@ -30,3 +30,8 @@ Im Programm Fenster wird das Bild des gesuchten Wortes, ein Eingabefeld und vier
 
 Außerdem gibt es, nach dem 1. Versuch für ein Wort, über dem Bild einen Text,
 welcher die Anzahl der Versuche für das derzeitige Wort anzeigt.
+
+### Automatisiertes Testen
+Mithilfe von JUnit werden vordefinierte Tests ausgeführt. 
+Getestet werden die [Wort-Klasse](/src/main/java/at/bprinc/Wort.java) und
+[Wort-Trainer](/src/main/java/at/bprinc/Worttrainer.java) Funktionalitäten.
