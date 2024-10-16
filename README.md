@@ -35,3 +35,17 @@ welcher die Anzahl der Versuche für das derzeitige Wort anzeigt.
 Mithilfe von JUnit werden vordefinierte Tests ausgeführt. 
 Getestet werden die [Wort-Klasse](/src/main/java/at/bprinc/Wort.java) und
 [Wort-Trainer](/src/main/java/at/bprinc/Worttrainer.java) Funktionalitäten.
+
+### JAR-Build
+Um das Programm als ausführbare JAR zu exportieren, wird Gradle zusammen mit dem ***shadowJar*** Plugin verwendet.
+```
+shadowJar {
+    archiveBaseName.set('Worttrainer')  // Name der JAR-Datei
+    archiveVersion.set('1-0')
+    archiveClassifier.set('')
+    manifest {
+        attributes 'Main-Class': 'at.bprinc.GameController'
+    }
+}
+```
+Über diese Konfiguration wird eine Worttrainer-1-0.jar erstellt, welche alle notwendigen Dependencies beinhält.

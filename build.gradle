@@ -24,7 +24,7 @@ test {
 
 shadowJar {
     archiveBaseName.set('Worttrainer')  // Name der JAR-Datei
-    archiveVersion.set('1.0')
+    archiveVersion.set('1-0')
     archiveClassifier.set('')
     manifest {
         attributes 'Main-Class': 'at.bprinc.GameController'
